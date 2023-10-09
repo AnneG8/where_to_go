@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-from blog import views
+from places import views
 
 
 urlpatterns = [
