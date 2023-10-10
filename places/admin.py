@@ -13,3 +13,5 @@ class PlaceAdmin(admin.ModelAdmin):
     search_fields = ['title',]
     list_display = ['title', ]
     inlines = [ImageInline,]
+
+admin.site.register(Image)

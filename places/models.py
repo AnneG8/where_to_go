@@ -36,3 +36,6 @@ class Image(models.Model):
     class Meta:
         verbose_name = 'Изображение'
         verbose_name_plural = 'Изображения'
+
+    def __str__(self):
+        return f'{self.id}. {self.place}' 
