@@ -21,7 +21,7 @@ class Place(models.Model):
         return self.title
 
     def get_coordinates(self):
-        return (self.lon, self.lat)
+        return [self.lon, self.lat]
 
 
 class Image(models.Model):
