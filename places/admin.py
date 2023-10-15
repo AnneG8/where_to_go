@@ -11,7 +11,7 @@ class ImageInline(admin.TabularInline):
 @admin.register(Place)
 class PlaceAdmin(admin.ModelAdmin):
     search_fields = ['title',]
-    list_display = ['title', ]
+    list_display = ['id', 'title', ]
     inlines = [ImageInline,]
 
 admin.site.register(Image)
