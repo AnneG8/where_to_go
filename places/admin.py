@@ -8,8 +8,7 @@ from places.models import Place, Image
 #     model = Image
 #     extra = 1
 #     sortable = 'image_num'
-#     ordering = ['image_num',]
-#     readonly_fields = ['image_preview', 'image_num',]
+#     readonly_fields = ['image_preview',]
 #     fields = ['image', 'image_preview', 'image_num',]
 
 #     def image_preview(self, instance):
@@ -20,7 +19,7 @@ from places.models import Place, Image
 class ImageInlineAdmin(SortableInlineAdminMixin, admin.TabularInline):
     model = Image
     extra = 1
-    readonly_fields = ['image_preview', 'image_num',]
+    readonly_fields = ['image_preview',]
     fields = ['image', 'image_preview', 'image_num',]
 
     def image_preview(self, instance):
@@ -40,4 +39,4 @@ class PlaceAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ['title', 'id',]
     inlines = [ImageInlineAdmin,]
 
-#admin.site.register(Image)
+# admin.site.register(Image)
