@@ -128,6 +128,8 @@ STATICFILES_DIRS = [
     str(Path(BASE_DIR, 'static'))
 ]
 
+STATIC_ROOT = f'{BASE_DIR}/assets/'
+
 MEDIA_ROOT = f'{BASE_DIR}/media/'
 
 # Default primary key field type
