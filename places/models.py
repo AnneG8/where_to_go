@@ -33,7 +33,7 @@ class Image(models.Model):
         on_delete=models.CASCADE
     )
     image = models.ImageField('Изображение', blank=False)
-    image_num = models.IntegerField('Номер изображения',default=0)
+    image_num = models.PositiveIntegerField('Номер изображения')
 
     class Meta:
         verbose_name = 'Изображение'
@@ -41,4 +41,4 @@ class Image(models.Model):
         ordering = ['image_num']
 
     def __str__(self):
-        return f'{self.image_num}. {self.place}'
+        return f'{self.id}. {self.place}, №{self.image_num} к {self.place}'
