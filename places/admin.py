@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from adminsortable2.admin import SortableAdminMixin
+from adminsortable2.admin import SortableInlineAdminMixin, SortableAdminMixin
 from places.models import Place, Image
 
 
@@ -17,7 +17,7 @@ from places.models import Place, Image
 
 #     image_preview.short_description = 'Превью'
 
-class ImageInlineAdmin(admin.TabularInline):
+class ImageInlineAdmin(SortableInlineAdminMixin, admin.TabularInline):
     model = Image
     extra = 1
     readonly_fields = ['image_preview', 'image_num',]
