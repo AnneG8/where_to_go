@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.html import format_html
 
 
 class Place(models.Model):
@@ -17,6 +16,7 @@ class Place(models.Model):
     class Meta:
         verbose_name = 'Место'
         verbose_name_plural = 'Места'
+        ordering = ['-id']
 
     def __str__(self):
         return self.title
@@ -32,11 +32,13 @@ class Image(models.Model):
         related_name='images',
         on_delete=models.CASCADE
     )
-    image = models.ImageField(verbose_name='Изображение', blank=False)
+    image = models.ImageField('Изображение', blank=False)
+    image_num = models.IntegerField('Номер изображения',default=0)
 
     class Meta:
         verbose_name = 'Изображение'
         verbose_name_plural = 'Изображения'
+        ordering = ['image_num']
 
     def __str__(self):
-        return f'{self.id}. {self.place}'
+        return f'{self.image_num}. {self.place}'
