@@ -4,6 +4,10 @@
 
 ![Куда поити](static/.gitbook/assets/site.png)
 
+## Демо-версия сайта
+
+Демо-версию сайта можно посмотреть на [AnneG8.pythonanywhere.com](AnneG8.pythonanywhere.com).
+
 ## Как установить
 
 Python3 должен быть уже установлен. 
