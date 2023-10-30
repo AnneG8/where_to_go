@@ -3,7 +3,7 @@ from tinymce.models import HTMLField
 
 
 class Place(models.Model):
-    title = models.CharField('Название', max_length=100)
+    title = models.CharField('Название', max_length=100, unique=True)
     description_short = models.CharField('Короткое описание',
                                          max_length=300,
                                          null=True,
@@ -37,7 +37,8 @@ class Image(models.Model):
     class Meta:
         verbose_name = 'Изображение'
         verbose_name_plural = 'Изображения'
-        ordering = ['image_num']
+        ordering = ['-place_id', 'image_num']
+        # unique_together = ('place', 'image')
 
     def __str__(self):
-        return f'{self.id}. {self.place}, №{self.image_num} к {self.place}'
+        return f'{self.place.id}.{self.image_num}. {self.image.name}'
