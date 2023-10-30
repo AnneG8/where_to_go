@@ -132,7 +132,7 @@ STATIC_ROOT = f'{BASE_DIR}/assets/'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = f'{BASE_DIR}/media/'
+MEDIA_ROOT = str(Path(BASE_DIR, 'media'))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
