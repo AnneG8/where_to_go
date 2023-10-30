@@ -37,6 +37,16 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+### Как заполнить базу данных
+
+Вы можете заполнить базу данных, используя команду **load_place**:
+```shell
+python manage.py load_place https://адрес/первого/json/файла.json https://адрес/второго/json/файла.json
+```
+При этом структура json-файла должна быть [такой](https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/places/%D0%90%D0%BD%D1%82%D0%B8%D0%BA%D0%B0%D1%84%D0%B5%20Bizone.json).
+Количество ссылок на файлы, которых можно указать за раз, не ограничено.
+
+
 ### Настройки
 
 Внизу справа на странице можно включить отладочный режим логгирования.
