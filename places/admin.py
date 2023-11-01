@@ -20,6 +20,16 @@ class ImageInlineAdmin(SortableInlineAdminMixin, admin.TabularInline):
 class ImageAdmin(SortableAdminMixin, admin.ModelAdmin):
     sortable = 'image_num'
     ordering = ['-place_id', 'image_num']
+    list_display = ('__str__', 'show_image_preview',)
+    autocomplete_fields = ['place']
+
+    def get_list_display_links(self, request, list_display):
+        return ()
+
+    def show_image_preview(self, instance):
+        return format_html('<img src="{}" style="max-height: 200px;" />', instance.image.url)
+
+    show_image_preview.short_description = 'Превью'
 
 
 @admin.register(Place)
