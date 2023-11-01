@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+
 from environs import Env
 
 env = Env()
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str('SECRET_KEY', 'REPLACE_ME')
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', False)
@@ -128,7 +129,7 @@ STATICFILES_DIRS = [
     str(Path(BASE_DIR, 'static'))
 ]
 
-STATIC_ROOT = f'{BASE_DIR}/assets/'
+STATIC_ROOT = str(Path(BASE_DIR, 'assets'))
 
 MEDIA_URL = '/media/'
 
