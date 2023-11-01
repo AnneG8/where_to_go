@@ -15,23 +15,25 @@ class Migration(migrations.Migration):
             name='image',
             options={'ordering': ['-place__id', 'image_num'], 'verbose_name': 'Изображение', 'verbose_name_plural': 'Изображения'},
         ),
-        migrations.RemoveField(
+        migrations.AlterField(
             model_name='place',
             name='description_long',
-        ),
-        migrations.RemoveField(
-            model_name='place',
-            name='description_short',
-        ),
-        migrations.AddField(
-            model_name='place',
-            name='long_description',
             field=tinymce.models.HTMLField(blank=True, verbose_name='Полное описание'),
         ),
-        migrations.AddField(
+        migrations.RenameField(
             model_name='place',
-            name='short_description',
+            old_name='description_long',
+            new_name='long_description',
+        ),
+        migrations.AlterField(
+            model_name='place',
+            name='description_short',
             field=models.TextField(blank=True, verbose_name='Короткое описание'),
+        ),
+        migrations.RenameField(
+            model_name='place',
+            old_name='description_short',
+            new_name='short_description',
         ),
         migrations.AlterField(
             model_name='image',
