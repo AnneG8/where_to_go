@@ -30,8 +30,8 @@ def show_place(request, place_id):
     serialize_place = {
         'title': place.title,
         'imgs': [image.image.url for image in place.images.all()],
-        'description_short': place.short_description,
-        'description_long': place.long_description,
+        'short_description': place.short_description,
+        'long_description': place.long_description,
         'coordinates': {
             'lng': place.lon,
             'lat': place.lat
