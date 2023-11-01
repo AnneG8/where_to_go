@@ -29,8 +29,8 @@ class Command(BaseCommand):
                 CommandError(err)
 
             defaults = {
-                'description_short': place_params['description_short'],
-                'description_long': place_params['description_long'],
+                'short_description': place_params['description_short'],
+                'long_description': place_params['description_long'],
                 'lat': place_params['coordinates']['lat'],
                 'lon': place_params['coordinates']['lng'],
             }
