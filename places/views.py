@@ -6,22 +6,18 @@ from places.models import Place
 
 def show_mainpage(request):
     places = Place.objects.all()
-    features = []
-    for place in places:
-        feature = {
-            'type': 'Feature',
-            'geometry': {
-                'type': 'Point',
-                'coordinates': place.get_coordinates()
-            },
-            'properties': {
-                'title': place.title,
-                'placeId': place.id,
-                'detailsUrl': reverse('place', kwargs={'place_id': place.id})
-            }
-        }
-        features.append(feature)
-
+    features = [{
+                    'type': 'Feature',
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': place.get_coordinates()
+                    },
+                    'properties': {
+                        'title': place.title,
+                        'placeId': place.id,
+                        'detailsUrl': reverse('place', kwargs={'place_id': place.id})
+                    }
+                } for place in places]
     geo_json = {
         'type': 'FeatureCollection',
         'features': features
