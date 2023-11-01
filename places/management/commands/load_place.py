@@ -1,8 +1,10 @@
-import requests
 from os import path
 from urllib.parse import urlparse, unquote
+
+import requests
 from django.core.management.base import BaseCommand, CommandError
 from django.core.files.base import ContentFile
+
 from places.models import Place, Image
 
 
@@ -16,7 +18,6 @@ class Command(BaseCommand):
             type=str,
             help='urls to JSON files'
         )
-
 
     def handle(self, *args, **options):
         for json_url in options['json_urls']:
@@ -47,10 +48,7 @@ class Command(BaseCommand):
                     image, created = Image.objects.get_or_create(
                         place=place,
                         image=ContentFile(response.content, name=filename),
-                        defaults={'image_num': place.images.all().count() + 1}
+                        defaults={'image_num': place.images.count() + 1}
                     )
-                except requests.exceptions.HTTPError as err:
+                except requests.exceptions.HTTPError:
                     continue
-
-
-
