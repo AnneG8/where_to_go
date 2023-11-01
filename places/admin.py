@@ -7,18 +7,19 @@ from places.models import Place, Image
 class ImageInlineAdmin(SortableInlineAdminMixin, admin.TabularInline):
     model = Image
     extra = 1
-    readonly_fields = ['image_preview',]
-    fields = ['image', 'image_preview', 'image_num',]
+    readonly_fields = ['show_image_preview',]
+    fields = ['image', 'show_image_preview', 'image_num',]
 
-    def image_preview(self, instance):
+    def show_image_preview(self, instance):
         return format_html('<img src="{}" style="max-height: 200px;" />', instance.image.url)
 
-    image_preview.short_description = 'Превью'
+    show_image_preview.short_description = 'Превью'
 
 
 @admin.register(Image)
 class ImageAdmin(SortableAdminMixin, admin.ModelAdmin):
     sortable = 'image_num'
+    ordering = ['-place_id', 'image_num']
 
 
 @admin.register(Place)

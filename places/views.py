@@ -22,16 +22,16 @@ def show_mainpage(request):
         }
         features.append(feature)
 
-    data = {
+    geo_json = {
         'type': 'FeatureCollection',
         'features': features
     }
-    return render(request, 'mainpage.html', context={'data': data})
+    return render(request, 'mainpage.html', context={'geo_json': geo_json})
 
 
 def show_place(request, place_id):
     place = get_object_or_404(Place, id=place_id)
-    place_data = {
+    serialize_place = {
         'title': place.title,
         'imgs': [image.image.url for image in place.images.all()],
         'description_short': place.short_description,
@@ -41,6 +41,6 @@ def show_place(request, place_id):
             'lat': place.lat
         }
     }
-    return JsonResponse(place_data, safe=False, 
+    return JsonResponse(serialize_place, safe=False, 
                         json_dumps_params={'ensure_ascii': False, 
                                            'indent': 4})
