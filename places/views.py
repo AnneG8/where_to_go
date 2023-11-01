@@ -26,7 +26,7 @@ def show_mainpage(request):
 
 
 def show_place(request, place_id):
-    place = get_object_or_404(Place.objects.select_related('images'), id=place_id)
+    place = get_object_or_404(Place.objects.prefetch_related('images'), id=place_id)
     serialize_place = {
         'title': place.title,
         'imgs': [image.image.url for image in place.images.all()],
