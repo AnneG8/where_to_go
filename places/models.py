@@ -31,6 +31,7 @@ class Image(models.Model):
     image = models.ImageField('Изображение', blank=False)
     image_num = models.PositiveIntegerField(
         'Номер изображения',
+        default=0,
         db_index=True
     )
 
